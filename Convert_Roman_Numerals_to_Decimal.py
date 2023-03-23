@@ -25,4 +25,4 @@ class Solution():
         return x
 n = 'IX'
 print(Solution().romanToInt(n))
-# 1910
+# 9
