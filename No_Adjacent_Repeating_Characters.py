@@ -1,5 +1,3 @@
-# TODO ERROR
-
 def find_coutns(s):
     char_counts = {}
     for char in s:
@@ -17,28 +15,24 @@ def _is_possible(char_counts: dict, s_leng):
             return False
     return True
 
+def fill__list(start,end,step,string_as_list,chars_stack,char_counts):
+        for i in range(start, end, step):
+            string_as_list[i] = chars_stack[-1]
+            char_counts[chars_stack[-1]]=char_counts[chars_stack[-1]]-1
+            if char_counts[chars_stack[-1]]==0:
+                char_counts.pop(chars_stack[-1])
+                chars_stack.pop()
 
 def rearrangeString(s):
     char_counts = find_coutns(s)
-    print(char_counts)
     if _is_possible(char_counts, len(s)):
-        return_string = ''
-        counter = 0
-        while True:
-            if len(char_counts.keys()) == 0:
-                break
-            number_of_keys = len(char_counts.keys())
-            key = list(char_counts.keys())[counter]
-            counter+=1
-            counter = counter % number_of_keys
-            return_string = return_string+key
-            char_counts[key] = char_counts[key]-1
-            if char_counts[key] == 0:
-                char_counts.pop(key)
-        return return_string
-    else:
-        return None
+        string_as_list = ['' for i in range(len(s))]
+        chars_stack = list(char_counts.keys())
+        fill__list(0,len(s),2,string_as_list,chars_stack,char_counts)
+        fill__list(1,len(s),2,string_as_list,chars_stack,char_counts)
+    
+        return ''.join(string_as_list)
+    
 
-
-print(rearrangeString('aabbdddd'))
+print(rearrangeString('aabbddcdd'))
 # cbcabc
