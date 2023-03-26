@@ -1,5 +1,4 @@
 class Solution:
-
     def getRange(self, arr, target):
         last_index = -1
         first_index = -1
@@ -9,7 +8,6 @@ class Solution:
                 last_index = i
                 differ += 1
                 first_index = last_index-differ
-
         return (first_index, last_index)
 
 
