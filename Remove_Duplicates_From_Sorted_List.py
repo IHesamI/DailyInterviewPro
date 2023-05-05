@@ -1,13 +1,5 @@
 def remove_dups(nums: list):
     # Fill this in.
-    count = 0
-    for i in range(len(nums)):
-        try:
-            if nums[i] != nums[i+1]:
-                count += 1
-        except Exception:
-            count += 1
-
     i = 0
     while i < len(nums):
         j = i + 1
@@ -18,6 +10,7 @@ def remove_dups(nums: list):
                 j += 1
         i += 1
 
+    count = len(nums)
     return count
 
 
